@@ -5,6 +5,7 @@ import { join } from 'path';
 import { TasksModule } from '../tasks/tasks.module';
 import { UsersModule } from '../users/users.module';
 import { PrismaModule } from '../prisma/prisma.module';
+import { AuthModule } from 'auth/auth.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { PrismaModule } from '../prisma/prisma.module';
     TasksModule,
     UsersModule,
     PrismaModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
