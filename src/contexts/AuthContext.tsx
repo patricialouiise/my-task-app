@@ -5,10 +5,11 @@ import {
   useContext,
   useState,
   useEffect,
-  ReactNode
+  ReactNode,
+  useCallback
 } from "react";
 import { useRouter } from "next/navigation";
-import { jwtDecode } from "jwt-decode";
+import { JwtPayload, jwtDecode } from "jwt-decode";
 
 interface AuthContextType {
   userId: number | null;
@@ -22,31 +23,49 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [userId, setUserId] = useState<number | null>(null);
   const router = useRouter();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      const decodedToken: any = jwtDecode(token);
-      setUserId(decodedToken.sub);
-    }
-  }, []);
-
   const login = (token: string) => {
     localStorage.setItem("token", token);
 
     try {
-      const decodedToken: any = jwtDecode(token);
-      setUserId(decodedToken.sub);
-      router.push("/tasks");
+      const decodedToken: any = jwtDecode<JwtPayload>(token);
+
+      if (decodedToken.exp && decodedToken.exp * 1000 < Date.now()) {
+        logout();
+      } else {
+        setUserId(decodedToken.sub);
+        router.push("/tasks");
+      }
     } catch (error) {
       console.error("Failed to decode token", error);
     }
   };
 
-  const logout = () => {
+  const logout = useCallback(() => {
     localStorage.removeItem("token");
     setUserId(null);
     router.push("/login");
-  };
+  }, [router]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      try {
+        const decodedToken: any = jwtDecode<JwtPayload>(token);
+
+        console.log(decodedToken.exp);
+
+        if (decodedToken.exp && decodedToken.exp * 1000 < Date.now()) {
+          logout();
+        } else {
+          setUserId(decodedToken.sub);
+          router.push("/tasks");
+        }
+      } catch (error) {
+        console.error("Failed to decode token", error);
+      }
+    }
+  }, [logout, router]);
 
   return (
     <AuthContext.Provider value={{ userId, login, logout }}>

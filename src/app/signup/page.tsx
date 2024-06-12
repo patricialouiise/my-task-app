@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation, gql } from "@apollo/client";
 import { useAuth } from "@/contexts/AuthContext";
+import { useRouter } from "next/navigation";
 
 const SIGNUP_MUTATION = gql`
   mutation SignUp($email: String!, $password: String!) {
@@ -14,7 +15,14 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signUp] = useMutation(SIGNUP_MUTATION);
-  const { login } = useAuth();
+  const { login, userId } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (userId) {
+      router.push("/tasks");
+    }
+  }, [userId, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

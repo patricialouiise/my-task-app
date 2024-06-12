@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useQuery, useMutation, gql } from "@apollo/client";
 import { useAuth } from "../../contexts/AuthContext";
+import PrivateRoute from "../components/PrivateRoute";
+import { useRouter } from "next/navigation";
 
 const GET_TASKS_QUERY = gql`
   query GetTasks($userId: Int!) {
@@ -35,7 +37,8 @@ const DELETE_TASK_MUTATION = gql`
 export default function Tasks() {
   const [note, setNote] = useState("");
   const [datetime, setDatetime] = useState("");
-  const { userId } = useAuth();
+  const { userId, logout } = useAuth();
+  const router = useRouter();
 
   const { data, loading, refetch } = useQuery(GET_TASKS_QUERY, {
     variables: { userId },
@@ -69,35 +72,43 @@ export default function Tasks() {
     }
   };
 
+  const handleLogout = () => {
+    logout();
+    router.push("/login");
+  };
+
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
-      <h1>Tasks</h1>
+    <PrivateRoute>
       <div>
-        <input
-          type="datetime-local"
-          value={datetime}
-          onChange={(e) => setDatetime(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          value={note}
-          onChange={(e) => setNote(e.target.value)}
-          placeholder="Note"
-          required
-        />
-        <button onClick={handleCreateTask}>Add Task</button>
+        <h1>Tasks</h1>
+        <button onClick={handleLogout}>Logout</button>
+        <div>
+          <input
+            type="datetime-local"
+            value={datetime}
+            onChange={(e) => setDatetime(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            placeholder="Note"
+            required
+          />
+          <button onClick={handleCreateTask}>Add Task</button>
+        </div>
+        <ul>
+          {data?.tasks?.map((task: any) => (
+            <li key={task.id}>
+              {task.note} at {new Date(task.datetime).toLocaleString()}
+              <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul>
-        {data?.tasks?.map((task: any) => (
-          <li key={task.id}>
-            {task.note} at {new Date(task.datetime).toLocaleString()}
-            <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    </PrivateRoute>
   );
 }

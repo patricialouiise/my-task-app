@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useMutation, gql } from "@apollo/client";
+import { useEffect, useState } from "react";
+import { useMutation, gql, ApolloError } from "@apollo/client";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -16,16 +16,26 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [loginMutation] = useMutation(LOGIN_MUTATION);
   const router = useRouter();
-  const { login } = useAuth();
+  const { login, userId } = useAuth();
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (userId) {
+      router.push("/tasks");
+    }
+  }, [userId, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      setError("");
       const { data } = await loginMutation({ variables: { email, password } });
 
       login(data.login);
     } catch (err) {
-      console.error(err);
+      const error = err as ApolloError;
+
+      setError(error.message);
     }
   };
 
@@ -47,6 +57,7 @@ export default function Login() {
           placeholder="Password"
           required
         />
+        <p>{error}</p>
         <button type="submit">Login</button>
       </form>
     </>
