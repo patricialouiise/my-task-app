@@ -18,26 +18,26 @@ const Footer: React.FC = () => {
         </div>
         <div className="footer-column">
           <h4>FOR PARENTS</h4>
-          <a href="/resources/parents">Parent Resources</a>
-          <a href="/how-it-works">How It Works</a>
-          <a href="/testimonials">Testimonials</a>
-          <a href="/terms-of-use">Terms of Use</a>
-          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="#">Parent Resources</a>
+          <a href="#">How It Works</a>
+          <a href="#">Testimonials</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Privacy Policy</a>
         </div>
         <div className="footer-column">
           <h4>FOR PROVIDERS</h4>
-          <a href="/resources/childcare-providers">Provider Resources</a>
-          <a href="/get-started">How It Works</a>
-          <a href="/provider-testimonials">Testimonials</a>
-          <a href="/terms-for-providers">Terms and Conditions</a>
-          <a href="/register">List Your Program</a>
+          <a href="#">Provider Resources</a>
+          <a href="#">How It Works</a>
+          <a href="#">Testimonials</a>
+          <a href="#">Terms and Conditions</a>
+          <a href="#">List Your Program</a>
         </div>
         <div className="footer-column">
           <h4>MORE</h4>
-          <a href="/about-us">About Us</a>
-          <a href="/press">Press</a>
-          <a href="/jobs">Jobs</a>
-          <a href="/contact-us">Contact Us</a>
+          <a href="#">About Us</a>
+          <a href="#">Press</a>
+          <a href="#">Jobs</a>
+          <a href="#">Contact Us</a>
         </div>
         <div className="footer-column">
           <div

@@ -94,6 +94,11 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 - [http://localhost:3000/login](http://localhost:3000/login) for the Login Page
 - [http://localhost:3000/signup](http://localhost:3000/signup) for the Sign-up Page
 
+## Notes:
+
+- Footer links not working aside from social media (just for UI)
+- Search not working! Just for UI display
+
 ## Remaining To do's:
 
 - Add more tests!
