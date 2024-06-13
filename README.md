@@ -1,6 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
+
+This is a Task list application that contains:
+
+- Authentication (Sign up and Login)
+- Add, Delete and display of tasks
+
+Done using:
+
+- Next.js
+- Nest JS
+- Apollo GraphQL
+- MySQL Database
 
 Let's run the application!
 
