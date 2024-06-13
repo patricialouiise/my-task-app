@@ -99,3 +99,4 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 - Add more tests!
 - Remove boostrap to fully use tailwind for UI styling
 - Update docker-compsose.yml to also run frontend and backend
+- Separate tests
