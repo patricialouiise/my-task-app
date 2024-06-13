@@ -3,24 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --primary-color: rgba(35, 170, 170, 1);
+  --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --foreground-rgb: 255, 255, 255;
 }
 
 body {
   font-family: "Lucida Sans Unicode", "Lucida Grande", Arial, Helvetica, clean,
     sans-serif;
   color: rgb(var(--foreground-rgb));
-  background: "#FFF";
+  font-size: 14px;
+  background: rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
@@ -29,7 +23,12 @@ body {
   }
 }
 
-.ZipSearch__button {
+.form-control,
+a {
+  font-size: 14px;
+}
+
+.searchButton {
   width: 100px;
   height: 40px;
   border-top-right-radius: 2px;
@@ -37,7 +36,6 @@ body {
   background-color: #ee2d68;
   color: #fff;
   width: 70px;
-  cursor: pointer;
 }
 
 h1 {
@@ -49,50 +47,57 @@ h1 {
 }
 
 .dropdown-menu {
-  background-color: #fff;
+  background-color: #feb708;
   border: 1px solid #ccc;
   border-radius: 0.25rem;
   padding: 0;
   min-width: 200px;
   display: none;
-  margin-top: 0.5rem;
+  position: absolute;
+  right: 0;
+  margin-top: 40px;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-.dropdownOpen .dropdown-menu {
+.dropdown.show .dropdown-menu {
   display: block;
 }
 
+.dropdown-menu li {
+  background-color: #feb708;
+}
+
+.dropdownButton {
+  background-color: #feb708;
+  border: none;
+}
+
 .dropdown-item {
-  color: #333;
+  color: #fff;
   padding: 0.5rem 1rem;
   transition: background-color 0.2s, color 0.2s;
 }
 
 .dropdown-item:hover {
   background-color: #ffcc00;
-  color: #333;
+  color: #fff;
+  opacity: 0.8;
 }
 
 .dropdown-item:focus,
 .dropdown-item:active {
   background-color: #ffcc00;
-  color: #333;
+  color: #fff;
 }
 
 .dropdown-toggle::after {
   display: none;
 }
 
-.dropdownButton {
-  background-color: #ffcc00;
-  border: none;
-}
-
 .btn-primary {
   background-color: rgba(35, 170, 170, 1);
   border-color: rgba(35, 170, 170, 1);
-  border-radius: "2px";
+  border-radius: 2px;
 }
 
 .btn-primary:hover {
@@ -104,3 +109,30 @@ h1 {
   font-size: 1.25rem;
   font-weight: 300;
 }
+/* 
+.footer-heading {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.footer-link {
+  color: #b3b3b3;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.footer-link:hover {
+  color: #fff;
+}
+
+.social-link {
+  color: #b3b3b3;
+  margin: 0 0.5rem;
+  font-size: 1.5rem;
+}
+
+.social-link:hover {
+  color: #fff;
+} */

@@ -1,0 +1,14 @@
+header {
+  background-color: var(--primary-color);
+}
+
+#dropdownMenuButton {
+  color: #fff;
+  border-radius: 2px;
+  height: 40px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}

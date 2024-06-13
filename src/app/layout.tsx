@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ReactNode } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { ApolloWrapper } from "./helpers/ApolloWrapper";
@@ -14,9 +14,9 @@ const Layout = ({ children }: { children: ReactNode }) => (
   <>
     <html lang="en">
       <ApolloWrapper>
-        <body className="d-flex flex-column min-vh-100">
+        <body className="flex flex-col min-h-screen">
           <Header />
-          <main className="container mt-4 flex-fill">{children}</main>
+          <main className="container mx-auto mt-4 flex-grow">{children}</main>
           <Footer />
         </body>
       </ApolloWrapper>

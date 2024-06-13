@@ -1,110 +1,75 @@
-import Link from "next/link";
+import React from "react";
+import "../styles/Footer.css";
+import Image from "next/image";
 
-const Footer = () => (
-  <>
-    <footer className="bg-dark text-white py-4">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-4">
-            <h5>FOR PARENTS</h5>
-            <ul className="list-unstyled">
-              <li>
-                <Link href="/parent-resources">
-                  <p className="text-white">Parent Resources</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="/how-it-works">
-                  <p className="text-white">How It Works</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="/testimonials">
-                  <p className="text-white">Testimonials</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms-of-use">
-                  <p className="text-white">Terms of Use</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy-policy">
-                  <p className="text-white">Privacy Policy</p>
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="col-md-4">
-            <h5>FOR PROVIDERS</h5>
-            <ul className="list-unstyled">
-              <li>
-                <Link href="/provider-resources">
-                  <p className="text-white">Provider Resources</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="/how-it-works">
-                  <p className="text-white">How It Works</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="/testimonials">
-                  <p className="text-white">Testimonials</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms-and-conditions">
-                  <p className="text-white">Terms and Conditions</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="/list-your-program">
-                  <p className="text-white">List Your Program</p>
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="col-md-4">
-            <h5>MORE</h5>
-            <ul className="list-unstyled">
-              <li>
-                <Link href="/about-us">
-                  <p className="text-white">About Us</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="/press">
-                  <p className="text-white">Press</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="/jobs">
-                  <p className="text-white">Jobs</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact">
-                  <p className="text-white">Contact Us</p>
-                </Link>
-              </li>
-            </ul>
-          </div>
+const Footer: React.FC = () => {
+  return (
+    <div className="footer">
+      <div className="footer-section">
+        <div className="footer-column">
+          <a href="/" className="footer-logo">
+            <Image
+              src="https://c2zyebdn.cloudimg.io/s/cdn/x/https://divin2sy6ce0b.cloudfront.net/images/carelulu_logo_square_white.png"
+              alt="CareLuLu Logo"
+              width={122}
+              height={105}
+            />
+          </a>
         </div>
-        <div className="text-center mt-3">
-          <a href="https://facebook.com" className="text-white me-3">
-            <i className="bi bi-facebook"></i>
-          </a>
-          <a href="https://twitter.com" className="text-white me-3">
-            <i className="bi bi-twitter"></i>
-          </a>
-          <a href="https://instagram.com" className="text-white">
-            <i className="bi bi-instagram"></i>
-          </a>
+        <div className="footer-column">
+          <h4>FOR PARENTS</h4>
+          <a href="/resources/parents">Parent Resources</a>
+          <a href="/how-it-works">How It Works</a>
+          <a href="/testimonials">Testimonials</a>
+          <a href="/terms-of-use">Terms of Use</a>
+          <a href="/privacy-policy">Privacy Policy</a>
+        </div>
+        <div className="footer-column">
+          <h4>FOR PROVIDERS</h4>
+          <a href="/resources/childcare-providers">Provider Resources</a>
+          <a href="/get-started">How It Works</a>
+          <a href="/provider-testimonials">Testimonials</a>
+          <a href="/terms-for-providers">Terms and Conditions</a>
+          <a href="/register">List Your Program</a>
+        </div>
+        <div className="footer-column">
+          <h4>MORE</h4>
+          <a href="/about-us">About Us</a>
+          <a href="/press">Press</a>
+          <a href="/jobs">Jobs</a>
+          <a href="/contact-us">Contact Us</a>
+        </div>
+        <div className="footer-column">
+          <div
+            style={{
+              marginLeft: "-18px"
+            }}
+          >
+            <a
+              href="https://www.facebook.com/carelulu"
+              className="social-icon facebook"
+            ></a>
+            <a
+              href="https://www.twitter.com/mycarelulu"
+              className="social-icon twitter"
+            ></a>
+            <a
+              href="https://instagram.com/mycarelulu"
+              className="social-icon instagram"
+            ></a>
+          </div>
+          <div className="footer-button-wrapper">
+            <a
+              href="https://carelulu.zendesk.com/hc/en-us"
+              className="help-center-button"
+            >
+              Help Center
+            </a>
+          </div>
         </div>
       </div>
-    </footer>
-  </>
-);
+    </div>
+  );
+};
 
 export default Footer;
