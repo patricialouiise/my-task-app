@@ -72,11 +72,6 @@ export default function Tasks() {
     }
   };
 
-  const handleLogout = () => {
-    logout();
-    router.push("/login");
-  };
-
   if (loading) return <p>Loading...</p>;
 
   return (
@@ -85,9 +80,6 @@ export default function Tasks() {
         <div className="row">
           <div className="col-12">
             <h1 className="mb-4">Tasks</h1>
-            <button className="btn btn-danger mb-4" onClick={handleLogout}>
-              Logout
-            </button>
             <div className="card mb-4">
               <div className="card-body">
                 <h2 className="card-title">Add New Task</h2>

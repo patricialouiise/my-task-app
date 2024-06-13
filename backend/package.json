@@ -20,7 +20,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "migrate:dev": "prisma migrate dev",
     "prisma:generate": "npx prisma generate",
-    "prisma:generate:watch": "npx prisma generate --watch"
+    "prisma:generate:watch": "npx prisma generate --watch",
+    "seed": "ts-node --transpile-only prisma/seed.ts"
   },
   "dependencies": {
     "@nestjs/apollo": "^12.1.0",

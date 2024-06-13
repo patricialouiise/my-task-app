@@ -2,12 +2,10 @@ version: "3.1"
 
 services:
   db:
-    image: postgres
+    image: mysql:8
     restart: always
     environment:
-      # TODO: Move into env file
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: mydatabase
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
     ports:
-      - "5432:5432"
+      - "3306:3306"
