@@ -4,11 +4,18 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Let's run the application!
 
+## Setup .env
+
+Rename .env.local:
+
+- In the frontend (root directory), rename the .env.local to .env
+- In the backend directory, rename the .env.local to .env
+
 ## Setup and create the database
 
 Create and run the database through docker:
 
-1. From the root folder, run:
+1. From the root directory, run:
 
 ```bash
 docker-compose up -d
@@ -79,8 +86,16 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Pages:
+
+(all are in the menu too!)
+
+- [http://localhost:3000](http://localhost:3000) for homepage
+- [http://localhost:3000/login](http://localhost:3000/login) for the Login Page
+- [http://localhost:3000/signup](http://localhost:3000/signup) for the Sign-up Page
+
 ## Remaining To do's:
 
-- Add tests!
+- Add more tests!
 - Remove boostrap to fully use tailwind for UI styling
 - Update docker-compsose.yml to also run frontend and backend

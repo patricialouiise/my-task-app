@@ -9,8 +9,7 @@ export const { getClient, query, PreloadQuery } = registerApolloClient(() => {
   return new ApolloClient({
     cache: new InMemoryCache(),
     link: new HttpLink({
-      // TODO: Can move to .env
-      uri: "http://localhost:3002/graphql"
+      uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT
     })
   });
 });

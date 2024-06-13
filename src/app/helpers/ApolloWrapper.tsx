@@ -10,12 +10,9 @@ import {
 } from "@apollo/experimental-nextjs-app-support";
 import { setVerbosity } from "ts-invariant";
 
-// setVerbosity("debug");
-
 function makeClient() {
   const httpLink = new HttpLink({
-    // TODO: Can move to .env
-    uri: "http://localhost:3002/graphql",
+    uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT,
     fetchOptions: { cache: "no-store" }
   });
 

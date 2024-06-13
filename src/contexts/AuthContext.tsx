@@ -53,8 +53,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       try {
         const decodedToken: any = jwtDecode<JwtPayload>(token);
 
-        console.log(decodedToken.exp);
-
         if (decodedToken.exp && decodedToken.exp * 1000 < Date.now()) {
           logout();
         } else {
