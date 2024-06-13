@@ -17,17 +17,90 @@
 }
 
 body {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Arial, Helvetica, clean,
+    sans-serif;
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: "#FFF";
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.ZipSearch__button {
+  width: 100px;
+  height: 40px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background-color: #ee2d68;
+  color: #fff;
+  width: 70px;
+  cursor: pointer;
+}
+
+h1 {
+  color: #333;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  padding: 0;
+  min-width: 200px;
+  display: none;
+  margin-top: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.dropdownOpen .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  color: #333;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: #ffcc00;
+  color: #333;
+}
+
+.dropdown-item:focus,
+.dropdown-item:active {
+  background-color: #ffcc00;
+  color: #333;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdownButton {
+  background-color: #ffcc00;
+  border: none;
+}
+
+.btn-primary {
+  background-color: rgba(35, 170, 170, 1);
+  border-color: rgba(35, 170, 170, 1);
+  border-radius: "2px";
+}
+
+.btn-primary:hover {
+  background-color: #e6b800;
+  border-color: #e6b800;
+}
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
 }

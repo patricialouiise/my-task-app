@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { ReactNode } from "react";
-// import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { ApolloWrapper } from "./helpers/ApolloWrapper";
 
 export const metadata: Metadata = {
   title: "Sample Task App",
@@ -13,7 +13,13 @@ export const metadata: Metadata = {
 const Layout = ({ children }: { children: ReactNode }) => (
   <>
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <ApolloWrapper>
+        <body className="d-flex flex-column min-vh-100">
+          <Header />
+          <main className="container mt-4 flex-fill">{children}</main>
+          <Footer />
+        </body>
+      </ApolloWrapper>
     </html>
   </>
 );

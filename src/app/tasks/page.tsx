@@ -81,33 +81,66 @@ export default function Tasks() {
 
   return (
     <PrivateRoute>
-      <div>
-        <h1>Tasks</h1>
-        <button onClick={handleLogout}>Logout</button>
-        <div>
-          <input
-            type="datetime-local"
-            value={datetime}
-            onChange={(e) => setDatetime(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-            placeholder="Note"
-            required
-          />
-          <button onClick={handleCreateTask}>Add Task</button>
+      <div className="container mt-5">
+        <div className="row">
+          <div className="col-12">
+            <h1 className="mb-4">Tasks</h1>
+            <button className="btn btn-danger mb-4" onClick={handleLogout}>
+              Logout
+            </button>
+            <div className="card mb-4">
+              <div className="card-body">
+                <h2 className="card-title">Add New Task</h2>
+                <div className="mb-3">
+                  <label htmlFor="datetime" className="form-label">
+                    Date and Time
+                  </label>
+                  <input
+                    type="datetime-local"
+                    className="form-control"
+                    id="datetime"
+                    value={datetime}
+                    onChange={(e) => setDatetime(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="note" className="form-label">
+                    Note
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="note"
+                    value={note}
+                    onChange={(e) => setNote(e.target.value)}
+                    placeholder="Note"
+                    required
+                  />
+                </div>
+                <button className="btn btn-primary" onClick={handleCreateTask}>
+                  Add Task
+                </button>
+              </div>
+            </div>
+            <ul className="list-group">
+              {data?.tasks?.map((task: any) => (
+                <li
+                  key={task.id}
+                  className="list-group-item d-flex justify-content-between align-items-center"
+                >
+                  {task.note} at {new Date(task.datetime).toLocaleString()}
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => handleDeleteTask(task.id)}
+                  >
+                    Delete
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <ul>
-          {data?.tasks?.map((task: any) => (
-            <li key={task.id}>
-              {task.note} at {new Date(task.datetime).toLocaleString()}
-              <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
-            </li>
-          ))}
-        </ul>
       </div>
     </PrivateRoute>
   );
